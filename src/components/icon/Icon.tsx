@@ -4,6 +4,6 @@ export type IconProps = () => {
   name: string;
 };
 
-export const Icon = ({ name }: IconProps) => {
+export function Icon({ name }: IconProps) {
   return <div>icon</div>;
-};
+}
