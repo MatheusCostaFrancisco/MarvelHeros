@@ -1,5 +1,8 @@
 import React from 'react';
-import { IconProps } from './types';
+
+export type IconProps = {
+  size: number;
+};
 
 export default function ToggleIcon({ size }: IconProps) {
   return (

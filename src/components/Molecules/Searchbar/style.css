@@ -20,8 +20,9 @@
   border: none;
   background-color: var(--pinkLight);
   outline: 0;
-  width: 100%;
+  width: 45vw;
   height: 45px;
+  border-radius: 100px;
 }
 .search-bar input::-moz-placeholder {
   color: var(--red);

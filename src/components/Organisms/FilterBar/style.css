@@ -39,4 +39,9 @@
   flex: 1;
   font-size: 0.8rem;
   color: var(--red);
+}
+@media only screen and (max-width: 550px) {
+  .filter-bar {
+    flex-direction: column-reverse;
+  }
 }/*# sourceMappingURL=style.css.map */

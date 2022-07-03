@@ -1,0 +1,16 @@
+.list-comics {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+.item-comic {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-top: 40px;
+}
+.item-comic__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}/*# sourceMappingURL=style.css.map */

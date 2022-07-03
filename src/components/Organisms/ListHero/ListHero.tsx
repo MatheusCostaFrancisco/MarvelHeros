@@ -10,11 +10,19 @@ export function ListHeros({ items }: ListProps) {
   return (
     <div className="list-wrappe">
       {items.length > 0 ? (
-        items.map(({ alt, url, legend, id }) => (
-          <HeroItem key={legend} alt={alt} url={url} legend={legend} id={id} />
+        items.map(({ alt, url, legend, id, isFavorite }) => (
+          <HeroItem
+            isFavorite={isFavorite}
+            key={legend}
+            alt={alt}
+            url={url}
+            legend={legend}
+            id={id}
+          />
         ))
       ) : (
         <HeroItem
+          isFavorite={false}
           key="Não encontrado"
           id={0}
           alt=""

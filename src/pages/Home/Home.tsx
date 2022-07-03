@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 import { Logo } from '../../components/Atoms/Logo/Logo';
 import { HeroItemProps } from '../../components/Molecules/HeroItem/HeroItem';
 import { SearchBar } from '../../components/Molecules/Searchbar/Searchbar';
@@ -8,34 +9,63 @@ import { FilterBar } from '../../components/Organisms/FilterBar/FilterBar';
 import { ListHeros } from '../../components/Organisms/ListHero/ListHero';
 
 import herosController from '../../infra/controllers/heros.controller';
+import { getFavoritesStore } from '../../Utils/store.local';
 
 import './style.css';
 
 function Home() {
   const [heros, setHeros] = useState<HeroItemProps[]>([]);
-  const [pages, setPages] = useState<number[]>([1, 2]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [heroSearch, setHeroSearch] = useState('');
+  const [onlyFavorite, setOnlynFavorite] = useState(false);
 
-  async function loadData() {
-    const end = currentPage * 20;
+  async function loadData(orderBy = 'name') {
+    const end = 1 * 20;
     const start = end - 20;
 
-    const getHeros = await herosController.getAll(start, end);
+    const getHeros: HeroItemProps[] = await herosController.getAll(
+      start,
+      end,
+      orderBy
+    );
+    const getFavoites = await getFavoritesStore();
+    const favoriteIds = getFavoites.map((item) => item.id);
+    const formatted = getHeros.map((item) => ({
+      ...item,
+      isFavorite: favoriteIds.includes(item.id),
+    }));
 
+    setHeros(formatted);
+  }
+
+  async function loadHerosByName(heroName: string) {
+    const getHeros = await herosController.getByName(heroName);
     setHeros(getHeros);
   }
 
-  const handleSetcurrentPage = (item: number) => {
-    setCurrentPage(item);
+  const loadFavoritesHeros = () => {
+    if (!onlyFavorite) {
+      const favotires = getFavoritesStore();
+      setHeros(favotires);
+    } else {
+      loadData();
+    }
+    setOnlynFavorite((prev) => !prev);
+  };
+
+  const HadleOrderByName = () => {
+    loadData('-name');
   };
 
   useEffect(() => {
+    if (heroSearch) {
+      loadHerosByName(heroSearch);
+      return;
+    }
+
     loadData();
-  }, [currentPage]);
+  }, [heroSearch]);
 
   useEffect(() => {
-    // const pagesQuantity = (heros.length || 20) / 20;
     loadData();
   }, []);
 
@@ -55,13 +85,28 @@ function Home() {
           }}
           placeholder="Procure por heróis"
         />
-        <FilterBar />
+        <FilterBar
+          numberResults={heros.length}
+          onlyFavorite={{ state: onlyFavorite, action: loadFavoritesHeros }}
+          orderAZ={HadleOrderByName}
+        />
       </div>
       <div className="home__content">
         <div className="home-wrapper">
           <ListHeros items={heros} />
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

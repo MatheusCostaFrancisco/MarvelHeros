@@ -1,5 +1,8 @@
 import React from 'react';
-import { IconProps } from './types';
+
+type IconProps = {
+  size: number;
+};
 
 export default function SuperIcon({ size }: IconProps) {
   return (

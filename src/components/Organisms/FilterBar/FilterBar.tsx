@@ -5,17 +5,24 @@ import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
 import './style.css';
 
 export type FilterBarProps = {
-  onlyFavorite?: boolean;
-  orderAZ?: boolean;
+  numberResults: number;
+  onlyFavorite: {
+    action: () => void;
+    state: boolean;
+  };
+  orderAZ: () => void;
 };
 
 export function FilterBar({
-  onlyFavorite = false,
-  orderAZ = false,
+  onlyFavorite,
+  orderAZ,
+  numberResults,
 }: FilterBarProps) {
   return (
     <div className="filter-bar">
-      <div className="filter-bar__quantity">Encontrados 20 heróis</div>
+      <div className="filter-bar__quantity">
+        Encontrados {numberResults} heróis
+      </div>
       <div className="filter-bar__order">
         <div className="filter-bar__order__icon">
           <SuperIcon size={18} />
@@ -28,10 +35,8 @@ export function FilterBar({
       <div className="filter-bar__only-favorite">
         <div className="filter-bar__only-favorite__icon">
           <LikeButton
-            isFavarite
-            onClick={() => {
-              console.log('ixi');
-            }}
+            isFavarite={onlyFavorite.state}
+            onClick={onlyFavorite.action}
           />
         </div>
 

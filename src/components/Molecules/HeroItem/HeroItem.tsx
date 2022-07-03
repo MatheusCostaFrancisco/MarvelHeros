@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import {
+  getFavoritesStore,
+  removeFavoriteStore,
+  setFavoriteStore,
+} from '../../../Utils/store.local';
 import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
 import './style.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export type HeroItemProps = {
-  url?: string;
+  url: string;
   alt?: string;
   legend?: string;
   id: number;
+  isFavorite: boolean;
 };
 
 function HeroItem({
@@ -15,27 +23,49 @@ function HeroItem({
   alt = 'text',
   legend = 'Dont have',
   id,
+  isFavorite,
 }: HeroItemProps) {
-  const [isFavarite, setIsFavorite] = useState(false);
+  const [isFavarite, setIsFavorite] = useState(isFavorite);
+  const notify = () =>
+    toast('5 hérios é suficiente para derrotar os inimigos!');
 
   const handleFavorite = () => {
-    setIsFavorite((prev) => !prev);
+    if (!isFavarite) {
+      const formatted = getFavoritesStore();
+      if (formatted.length === 5) {
+        notify();
+        return;
+      }
+      setIsFavorite(true);
+      const model = {
+        url,
+        alt,
+        legend,
+        id,
+        isFavorite: true,
+      };
+
+      setFavoriteStore(model);
+    } else {
+      setIsFavorite(false);
+      removeFavoriteStore(id);
+    }
   };
 
   return (
-    <Link to={`Hero/${id}`}>
-      <div className="hero-item">
+    <div className="hero-item">
+      <Link to={`Hero/${id}`}>
         <div className="hero-item__image">
           <img src={url} alt={alt} />
         </div>
-        <div className="hero-item__footer">
-          <div>{legend}</div>
-          <div className="hero-item__footer__like">
-            <LikeButton isFavarite={isFavarite} onClick={handleFavorite} />
-          </div>
+      </Link>
+      <div className="hero-item__footer">
+        <div>{legend}</div>
+        <div className="hero-item__footer__like">
+          <LikeButton isFavarite={isFavarite} onClick={handleFavorite} />
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
