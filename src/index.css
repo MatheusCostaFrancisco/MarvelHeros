@@ -16,6 +16,7 @@
 }
 
 body {
+  padding-bottom: 50px;
   border-bottom: 50px solid var(--red);
 }
 

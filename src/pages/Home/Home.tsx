@@ -5,7 +5,8 @@ import { FilterBar } from '../../components/FilterBar/FilterBar';
 import { HeroItemProps } from '../../components/HeroItem/HeroItem';
 import { ListHeros } from '../../components/ListHero/ListHero';
 import { Logo } from '../../components/Logo/Logo';
-import { SearchBar } from '../../components/searchbar/searchbar';
+import { SearchBar } from '../../components/Searchbar/Searchbar';
+
 import herosController from '../../infra/controllers/heros.controller';
 
 import './style.css';
@@ -14,6 +15,7 @@ function Home() {
   const [heros, setHeros] = useState<HeroItemProps[]>([]);
   const [pages, setPages] = useState<number[]>([1, 2]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [heroSearch, setHeroSearch] = useState('');
 
   async function loadData() {
     const end = currentPage * 20;
@@ -46,29 +48,18 @@ function Home() {
           Mergule no domínio deslumbrante de todos os personagens clássicos que
           você ama - e aqueles que você descobrirá em breve!
         </div>
-        <div>
-          <SearchBar placeholder="Procure por heróis" />
-        </div>
+        <SearchBar
+          value={heroSearch}
+          onChange={(text: string) => {
+            setHeroSearch(text);
+          }}
+          placeholder="Procure por heróis"
+        />
         <FilterBar />
       </div>
       <div className="home__content">
         <div className="home-wrapper">
           <ListHeros items={heros} />
-        </div>
-
-        <div>
-          <div>{'<'}</div>
-          <div>
-            {pages.map((page) => {
-              if (page === currentPage) {
-                return <u>{page}</u>;
-              }
-              return (
-                <div onClick={() => handleSetcurrentPage(page)}>{page}</div>
-              );
-            })}
-          </div>
-          <div>{'>'}</div>
         </div>
       </div>
     </div>

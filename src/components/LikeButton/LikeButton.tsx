@@ -40,8 +40,8 @@ export function LikeButton({ isFavarite, onClick }: LikeButtonProps) {
       <div className="animation">
         <Lottie
           options={defaultOptions}
-          width={32}
-          height={32}
+          width={64}
+          height={64}
           direction={animationState.direction}
           isStopped={animationState.isStopped}
           isPaused={animationState.isPaused}

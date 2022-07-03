@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 0.8rem;
 }
 .filter-bar__quantity {
   color: var(--grayLight);
@@ -21,7 +21,7 @@
   gap: 10px;
 }
 .filter-bar__order__text {
-  font-size: 9px;
+  font-size: 0.8rem;
   color: var(--red);
 }
 .filter-bar__only-favorite {
@@ -37,6 +37,6 @@
 }
 .filter-bar__only-favorite__text {
   flex: 1;
-  font-size: 9px;
+  font-size: 0.8rem;
   color: var(--red);
 }/*# sourceMappingURL=style.css.map */

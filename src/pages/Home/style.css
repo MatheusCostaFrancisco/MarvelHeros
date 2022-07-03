@@ -6,15 +6,17 @@
 }
 .home__header {
   justify-content: center;
+  width: 70vw;
   align-items: center;
   text-align: center;
   margin-bottom: 20px;
 }
 .home__header__title {
   font-weight: bolder;
+  font-size: 1.2rem;
 }
 .home__header__subtitle {
-  font-size: 8px;
+  font-size: 0.8rem;
   color: var(--grayLight);
   margin-bottom: 30px;
 }
