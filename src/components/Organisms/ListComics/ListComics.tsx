@@ -21,7 +21,7 @@ export function ListComics({ comics }: ListComicsProps) {
           />
         ))}
 
-      {!comics.length && <div>Sem Resultados</div>}
+      {comics.length > 0 && <div>Sem Resultados</div>}
     </div>
   );
 }

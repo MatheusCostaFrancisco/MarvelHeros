@@ -10,6 +10,12 @@ export type HeroInformations = {
     extension: string;
     path: string;
   };
+  series: {
+    available: number;
+  };
+  comics: {
+    available: number;
+  };
 };
 
 function getModelHero(items: any) {
@@ -20,17 +26,19 @@ function getModelHero(items: any) {
     legend: item.name,
     thumbnail: item.thumbnail,
     isFavorite: false,
+    seriesQtd: item.series.available,
+    comicsQtd: item.comics.available,
   }));
 }
 
 const herosController = {
   getAll: async (offset: number, limit: number, orderBy: string) => {
-    const resp = resultado.data;
+    // const resp = resultado.data;
 
-    // const url = `v1/public/characters?${auth}&offset=${offset}&limit=${limit}&orderBy=${orderBy}`;
-    // const { data: resp } = await api.get(url);
+    const url = `v1/public/characters?${auth}&offset=${offset}&limit=${limit}&orderBy=${orderBy}`;
+    const { data: resp } = await api.get(url);
 
-    const model = getModelHero(resp);
+    const model = getModelHero(resp.data);
 
     return model;
   },

@@ -16,6 +16,8 @@ export type HeroItemProps = {
   legend?: string;
   id: number;
   isFavorite: boolean;
+  comicsQtd?: number;
+  seriesQtd?: number;
 };
 
 function HeroItem({
@@ -24,6 +26,8 @@ function HeroItem({
   legend = 'Dont have',
   id,
   isFavorite,
+  seriesQtd,
+  comicsQtd,
 }: HeroItemProps) {
   const [isFavarite, setIsFavorite] = useState(isFavorite);
   const notify = () =>
@@ -42,6 +46,8 @@ function HeroItem({
         alt,
         legend,
         id,
+        comicsQtd,
+        seriesQtd,
         isFavorite: true,
       };
 

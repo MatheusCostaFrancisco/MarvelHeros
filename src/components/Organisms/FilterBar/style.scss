@@ -28,6 +28,10 @@
             font-size: 0.8rem;
             color: var(--red);
         }
+
+        &__icon {
+            cursor: pointer;
+        }
     }
 
     &__only-favorite {

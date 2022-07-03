@@ -52,6 +52,16 @@
   }
 }
 
+.hero-infos {
+  display: flex;
+  padding: 30px 0px;
+}
+.hero-infos__wrapper {
+  display: flex;
+  gap: 100px;
+  flex-direction: row;
+}
+
 .about-hero__text__title {
   display: flex;
   justify-content: space-between;

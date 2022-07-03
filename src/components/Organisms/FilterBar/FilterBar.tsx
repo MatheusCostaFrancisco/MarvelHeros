@@ -2,6 +2,7 @@ import React from 'react';
 import ToggleIcon from '../../Atoms/Icons/order';
 import SuperIcon from '../../Atoms/Icons/super';
 import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
+import { ToggleButton } from '../../Atoms/ToggleButton/ToggleButton';
 import './style.css';
 
 export type FilterBarProps = {
@@ -10,7 +11,10 @@ export type FilterBarProps = {
     action: () => void;
     state: boolean;
   };
-  orderAZ: () => void;
+  orderAZ: {
+    action: () => void;
+    state: boolean;
+  };
 };
 
 export function FilterBar({
@@ -29,7 +33,7 @@ export function FilterBar({
         </div>
         <div className="filter-bar__order__text">Ordenar por nome - A/Z</div>
         <div className="filter-bar__order__icon">
-          <ToggleIcon size={45} />
+          <ToggleButton isFavarite={orderAZ.state} onClick={orderAZ.action} />
         </div>
       </div>
       <div className="filter-bar__only-favorite">

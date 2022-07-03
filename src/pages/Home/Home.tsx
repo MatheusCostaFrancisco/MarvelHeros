@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+
 import { Logo } from '../../components/Atoms/Logo/Logo';
 import { HeroItemProps } from '../../components/Molecules/HeroItem/HeroItem';
 import { SearchBar } from '../../components/Molecules/Searchbar/Searchbar';
@@ -17,16 +17,18 @@ function Home() {
   const [heros, setHeros] = useState<HeroItemProps[]>([]);
   const [heroSearch, setHeroSearch] = useState('');
   const [onlyFavorite, setOnlynFavorite] = useState(false);
+  const [orderByName, setOrderByName] = useState(true);
 
-  async function loadData(orderBy = 'name') {
+  async function loadData() {
     const end = 1 * 20;
     const start = end - 20;
 
     const getHeros: HeroItemProps[] = await herosController.getAll(
       start,
       end,
-      orderBy
+      orderByName ? 'name' : '-name'
     );
+
     const getFavoites = await getFavoritesStore();
     const favoriteIds = getFavoites.map((item) => item.id);
     const formatted = getHeros.map((item) => ({
@@ -53,7 +55,8 @@ function Home() {
   };
 
   const HadleOrderByName = () => {
-    loadData('-name');
+    setOrderByName((prev) => !prev);
+    loadData();
   };
 
   useEffect(() => {
@@ -88,7 +91,7 @@ function Home() {
         <FilterBar
           numberResults={heros.length}
           onlyFavorite={{ state: onlyFavorite, action: loadFavoritesHeros }}
-          orderAZ={HadleOrderByName}
+          orderAZ={{ state: orderByName, action: HadleOrderByName }}
         />
       </div>
       <div className="home__content">
@@ -96,17 +99,6 @@ function Home() {
           <ListHeros items={heros} />
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 }

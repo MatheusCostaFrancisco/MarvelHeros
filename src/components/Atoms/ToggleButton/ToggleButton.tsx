@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import LoveFill from '../Icons/loveFill';
-import LoveOutline from '../Icons/loveOutline';
+import ToggleIcon from '../Icons/order';
 
 import './style.css';
 
@@ -11,7 +10,7 @@ export type LikeButtonProps = {
   onClick: () => void;
 };
 
-export function LikeButton({ isFavarite, onClick }: LikeButtonProps) {
+export function ToggleButton({ isFavarite, onClick }: LikeButtonProps) {
   const handleClick = () => {
     onClick();
   };
@@ -19,7 +18,7 @@ export function LikeButton({ isFavarite, onClick }: LikeButtonProps) {
   return (
     <div className="buttonWrapper" onClick={handleClick}>
       <div className="like-icon">
-        {!isFavarite ? <LoveOutline size={24} /> : <LoveFill size={24} />}
+        <ToggleIcon active={isFavarite} size={45} />
       </div>
     </div>
   );

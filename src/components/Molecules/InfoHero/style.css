@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  width: 100px;
+  flex-direction: column;
+}
+.wrapper__iconText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

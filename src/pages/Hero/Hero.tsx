@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import SuperIcon from '../../components/Atoms/Icons/super';
+import { toast } from 'react-toastify';
+import { LikeButton } from '../../components/Atoms/LikeButton/LikeButton';
 import { Loading } from '../../components/Atoms/Loading/Loading';
 import { Logo } from '../../components/Atoms/Logo/Logo';
+import { HeroItemProps } from '../../components/Molecules/HeroItem/HeroItem';
+import { InfoHero } from '../../components/Molecules/InfoHero/InfoHero';
 import { SearchBar } from '../../components/Molecules/Searchbar/Searchbar';
 import { ListComics } from '../../components/Organisms/ListComics/ListComics';
 import comicsController, {
   ComicItemProps,
 } from '../../infra/controllers/comics.controller';
-import herosController, {
-  HeroInformations,
-} from '../../infra/controllers/heros.controller';
+import herosController from '../../infra/controllers/heros.controller';
+import {
+  getFavoritesStore,
+  removeFavoriteStore,
+  setFavoriteStore,
+} from '../../Utils/store.local';
 
 import './style.css';
 
 function Hero() {
   const { id } = useParams();
   const [comicsList, setComicsList] = useState<ComicItemProps[]>([]);
-  const [hero, setHero] = useState<HeroInformations>();
+  const [hero, setHero] = useState<HeroItemProps>();
   const [isLoading, setIsLoading] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [heroSearch, setHeroSearch] = useState('');
+
+  const notify = () =>
+    toast('5 hérios é suficiente para derrotar os inimigos!');
 
   const getHeroInformation = async () => {
     const [getHero] = await herosController.getById(Number(id));
+    const getFavoites = getFavoritesStore();
+    const ids = getFavoites.map((x) => x.id);
+    setIsFavorite(ids.includes(getHero.id));
 
     setHero(getHero);
   };
@@ -40,6 +54,44 @@ function Hero() {
     }
   }
 
+  const handleFavorite = () => {
+    if (!isFavorite) {
+      const formatted = getFavoritesStore();
+      if (formatted.length === 5) {
+        notify();
+        return;
+      }
+
+      const model = {
+        url: hero?.url || '',
+        alt: hero?.alt || '',
+        legend: hero?.legend || '',
+        id: hero?.id || 0,
+        isFavorite: true,
+      };
+
+      setFavoriteStore(model);
+      setIsFavorite(true);
+    } else {
+      removeFavoriteStore(hero?.id || 0);
+      setIsFavorite(false);
+    }
+  };
+
+  async function loadHerosByName(heroName: string) {
+    const getHeros = await herosController.getByName(heroName);
+    setHero(getHeros[0]);
+  }
+
+  useEffect(() => {
+    if (heroSearch) {
+      loadHerosByName(heroSearch);
+      return;
+    }
+
+    loadData();
+  }, [heroSearch]);
+
   useEffect(() => {
     loadData();
   }, []);
@@ -53,8 +105,8 @@ function Hero() {
           <SearchBar
             value=""
             placeholder="Procure um héroi"
-            onChange={() => {
-              console.log('ta bom');
+            onChange={(text: string) => {
+              setHeroSearch(text);
             }}
           />
         </div>
@@ -66,20 +118,27 @@ function Hero() {
               <div className="content-hero__about">
                 <div className="about-hero__text">
                   <div className="about-hero__text__title">
-                    <h1>{hero?.name}</h1>
-                    <SuperIcon size={32} />
+                    <h1>{hero?.legend || ''}</h1>
+                    <LikeButton
+                      isFavarite={isFavorite}
+                      onClick={handleFavorite}
+                    />
                   </div>
-                  <p>{hero?.description}</p>
+                  <p>{hero?.alt || 'Sem informações'}</p>
                 </div>
                 <div className="about-hero__infos">
                   <div className="hero-infos">
                     <div className="hero-infos__wrapper">
-                      <div>Quadrinhos</div>
-                      <div>icon - text</div>
-                    </div>
-                    <div className="hero-infos__wrapper">
-                      <div>Filmes</div>
-                      <div>icon - text</div>
+                      <InfoHero
+                        title="Quadrinhos"
+                        iconName="book"
+                        quantity={hero?.comicsQtd || 0}
+                      />
+                      <InfoHero
+                        title="Filmes"
+                        iconName="trailer"
+                        quantity={hero?.seriesQtd || 0}
+                      />
                     </div>
                   </div>
                   <div>Rating: ✨✨✨✨✨</div>
@@ -87,10 +146,7 @@ function Hero() {
                 </div>
               </div>
               <div className="content-hero__image">
-                <img
-                  src={`${hero?.thumbnail.path}/portrait_incredible.${hero?.thumbnail.extension}`}
-                  alt=""
-                />
+                <img src={`${hero?.url}`} alt="" />
               </div>
             </div>
           </div>

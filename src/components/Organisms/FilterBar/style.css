@@ -24,6 +24,9 @@
   font-size: 0.8rem;
   color: var(--red);
 }
+.filter-bar__order__icon {
+  cursor: pointer;
+}
 .filter-bar__only-favorite {
   display: flex;
   flex-direction: row;
