@@ -1,1 +1,1 @@
-import { Icon } from './icon/Icon';
+import Footer from './Footer/footer';

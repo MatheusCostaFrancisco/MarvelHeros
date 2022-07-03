@@ -1,0 +1,48 @@
+@mixin flexbasic {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-bar {
+    margin-top: 30px;
+    gap: 20px;
+    @include flexbasic();
+
+    justify-content: space-between;
+    font-size: 11px;
+    
+
+    &__quantity {
+        color: var(--grayLight);
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    &__order {
+        @include flexbasic();
+        gap: 10px;
+
+        &__text {
+            font-size: 9px;
+            color: var(--red);
+        }
+    }
+
+    &__only-favorite {
+        @include flexbasic();
+        justify-content: flex-end;
+        gap: 10px;
+
+        &__icon {
+            width: 18px;
+        }
+
+        &__text {
+            flex: 1;
+            font-size: 9px;
+            color: var(--red);
+        }
+    }
+}

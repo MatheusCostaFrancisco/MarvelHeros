@@ -1,8 +1,27 @@
 :root {
-    --pinkLight: #FDECEC;
-    --white: #FFFFFF;
-    --colorText: #404040;
-    --redDark: #E92429;
-    --red: #FF1510;
-    --grayLight: #B9B9B9;
-  }
+  --pinkLight: #FDECEC;
+  --white: #FFFFFF;
+  --colorText: #404040;
+  --redDark: #E92429;
+  --red: #FF1510;
+  --grayLight: #B9B9B9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--colorText);
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  border-bottom: 50px solid var(--red);
+}
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1;
+}

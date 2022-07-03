@@ -1,0 +1,8 @@
+.footer {
+    background-color: var(--red);
+    height: 8vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    top: auto
+}

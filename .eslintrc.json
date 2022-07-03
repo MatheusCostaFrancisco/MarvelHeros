@@ -24,6 +24,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "react/require-default-props": "off",
     "linebreak-style": ["error", "windows"],
     "prettier/prettier": "off",
     "semi": "warn",

@@ -1,0 +1,23 @@
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 5px 15px;
+
+    width: 70vw;
+    background-color: var(--pinkLight);
+    border-radius: 100px;   
+    
+    &__icon {
+        margin-right: 18px;
+        margin-top: 3px;
+    }
+
+    &__text {
+        font-size: 8px;
+        color: var(--red);
+        margin-top: 2px;
+        
+    }
+}

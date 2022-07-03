@@ -1,3 +1,32 @@
-li {
-    color: var(--red)
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+.home__header {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.home__header__title {
+  font-weight: bolder;
+}
+.home__header__subtitle {
+  font-size: 8px;
+  color: var(--grayLight);
+  margin-bottom: 30px;
+}
+
+.home-wrapper {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 900px) {
+  .home-wrapper {
+    width: 95vw;
+  }
+}/*# sourceMappingURL=style.css.map */

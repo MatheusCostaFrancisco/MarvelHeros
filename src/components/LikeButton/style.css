@@ -1,0 +1,16 @@
+.buttonWrapper {    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  
+}
+
+.animation {
+pointer-events: none;
+}
