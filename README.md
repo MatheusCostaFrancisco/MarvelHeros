@@ -17,6 +17,26 @@ Site de busca de heróis da marvel, desafio envio pela LuisaLabs. (Ainda precisa
 https://developer.marvel.com/docs
 
 
+## Caso você queira testar/usar
+
+1. Crie um arquivo na raiz do projeto chamado `.env.local`
+2. Crie as seguintes variaveis: 
+
+ > REACT_APP_PRIVATE_KEY
+ 
+ > REACT_APP_PUBLIC_KEY
+ 
+3. Agora vá no site da marvel (https://developer.marvel.com/documentation/getting_started), crie uma conta e pegue os valores das chaves no site.
+Va ficar algo parecido com isso: 
+
+> REACT_APP_PRIVATE_KEY = '##################################'
+
+> REACT_APP_PUBLIC_KEY = '#################################'
+
+4. Agora execute o comando `yarn` e aguarde finalizar o processo de baixar a INTERNET toda no seu pc (brincadeira). 
+5. Terminou? - Rode o comando `yarn start` e seja feliz. Se achar um :bug: bug me avise por favor.
+
+
 ### Atribuições:
 <a href="https://www.flaticon.com/free-icons/marvel" title="marvel icons">Marvel icons created by Freepik - Flaticon</a>
 <p> Data provided by Marvel. © 2014 Marvel </p>
