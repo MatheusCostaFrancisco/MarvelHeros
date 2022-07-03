@@ -1,7 +1,7 @@
 {
   "name": "marvel.heros",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

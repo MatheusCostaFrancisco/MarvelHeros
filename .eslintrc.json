@@ -24,8 +24,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "react/require-default-props": "off",
     "linebreak-style": ["error", "windows"],
+    "react/require-default-props": "off",
     "prettier/prettier": "off",
     "semi": "warn",
     "react/jsx-filename-extension": [
