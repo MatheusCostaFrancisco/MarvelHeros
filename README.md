@@ -3,9 +3,9 @@
 
 
 
-Site de busca de heróis da marvel, desafio envio pela LuisaLabs.
+Site de busca de heróis da marvel, desafio envio pela LuisaLabs. (Ainda precisa refatorar, mas está 100% funcional)
 
-##Tecnologias:
+## Tecnologias:
 
 ![css](https://user-images.githubusercontent.com/105789100/177055401-145fb1b2-a80b-4e70-a810-18303400441d.png)
 ![html-5](https://user-images.githubusercontent.com/105789100/177055404-2270c14e-821c-4d86-b124-779a33ce66fe.png)
