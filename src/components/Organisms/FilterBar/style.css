@@ -18,7 +18,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
 }
 .filter-bar__order__text {
   font-size: 0.8rem;

@@ -22,7 +22,7 @@
 
     &__order {
         @include flexbasic();
-        gap: 10px;
+        gap: 30px;
 
         &__text {
             font-size: 0.8rem;

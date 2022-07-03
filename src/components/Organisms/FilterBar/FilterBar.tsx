@@ -1,5 +1,5 @@
 import React from 'react';
-import ToggleIcon from '../../Atoms/Icons/order';
+
 import SuperIcon from '../../Atoms/Icons/super';
 import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
 import { ToggleButton } from '../../Atoms/ToggleButton/ToggleButton';

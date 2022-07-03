@@ -56,7 +56,9 @@ function Home() {
 
   const HadleOrderByName = () => {
     setOrderByName((prev) => !prev);
-    loadData();
+    setTimeout(() => {
+      loadData();
+    }, 500);
   };
 
   useEffect(() => {
