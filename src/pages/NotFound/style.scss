@@ -1,0 +1,17 @@
+.not-found {
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			img {
+					width: 41%;
+			}
+	}
+}

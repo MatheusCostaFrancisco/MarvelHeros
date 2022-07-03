@@ -1,0 +1,14 @@
+.not-found__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.not-found__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.not-found__content img {
+  width: 41%;
+}/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api, auth } from '../base';
-import resultado from './mock';
 
 export type HeroInformations = {
   id: number;

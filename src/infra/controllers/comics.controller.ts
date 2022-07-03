@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { api, auth } from '../base';
-// import comics from './mockComics';
 
 export type ComicItemProps = {
   id: number;
