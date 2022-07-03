@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroItem, { HeroItemProps } from '../HeroItem/HeroItem';
+import HeroItem, { HeroItemProps } from '../../Molecules/HeroItem/HeroItem';
 import './style.css';
 
 export type ListProps = {

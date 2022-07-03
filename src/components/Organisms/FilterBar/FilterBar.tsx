@@ -1,7 +1,7 @@
 import React from 'react';
-import ToggleIcon from '../Icons/order';
-import SuperIcon from '../Icons/super';
-import { LikeButton } from '../LikeButton/LikeButton';
+import ToggleIcon from '../../Atoms/Icons/order';
+import SuperIcon from '../../Atoms/Icons/super';
+import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
 import './style.css';
 
 export type FilterBarProps = {

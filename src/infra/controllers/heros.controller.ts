@@ -20,7 +20,7 @@ const herosController = {
 
     const model = resp.results.map((item: HeroInformations) => ({
       ...item,
-      url: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+      url: `${item.thumbnail.path}/standard_fantastic.${item.thumbnail.extension}`,
       alt: item.description,
       legend: item.name,
     }));

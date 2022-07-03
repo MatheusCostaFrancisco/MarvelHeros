@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { LikeButton } from '../LikeButton/LikeButton';
+import { LikeButton } from '../../Atoms/LikeButton/LikeButton';
 import './style.css';
 
 export type HeroItemProps = {
@@ -11,7 +11,7 @@ export type HeroItemProps = {
 };
 
 function HeroItem({
-  url = 'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg',
+  url = 'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784/standard_medium.jpg',
   alt = 'text',
   legend = 'Dont have',
   id,

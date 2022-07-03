@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { useState } from 'react';
-import useDebounce from '../../Hooks/useDebounce';
+import useDebounce from '../../../Hooks/useDebounce';
 import './style.css';
 
 export type SearchBarProps = {

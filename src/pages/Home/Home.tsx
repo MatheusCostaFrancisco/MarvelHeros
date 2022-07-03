@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
-import { FilterBar } from '../../components/FilterBar/FilterBar';
-import { HeroItemProps } from '../../components/HeroItem/HeroItem';
-import { ListHeros } from '../../components/ListHero/ListHero';
-import { Logo } from '../../components/Logo/Logo';
-import { SearchBar } from '../../components/Searchbar/Searchbar';
+import { Logo } from '../../components/Atoms/Logo/Logo';
+import { HeroItemProps } from '../../components/Molecules/HeroItem/HeroItem';
+import { SearchBar } from '../../components/Molecules/Searchbar/Searchbar';
+import { FilterBar } from '../../components/Organisms/FilterBar/FilterBar';
+import { ListHeros } from '../../components/Organisms/ListHero/ListHero';
 
 import herosController from '../../infra/controllers/heros.controller';
 
