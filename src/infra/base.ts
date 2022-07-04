@@ -8,12 +8,10 @@ const api = axios.create({
 });
 
 const ts = new Date().getTime();
-const publicKey = 'cf41c508e6e855ce14436839f63b07ea';
-
 const hash = Md5.hashStr(
-  `${ts}${process.env.REACT_APP_PRIVATE_KEY}${publicKey}`
+  `${ts}${process.env.REACT_APP_PRIVATE_KEY}${process.env.REACT_APP_PUBLIC_KEY}`
 );
 
-const auth = `ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+const auth = `ts=${ts}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&hash=${hash}`;
 
 export { api, auth };
