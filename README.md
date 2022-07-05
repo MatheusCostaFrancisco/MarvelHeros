@@ -1,9 +1,9 @@
 
 # Marvel Heros Search ![shield](https://user-images.githubusercontent.com/105789100/177055306-064c6a1d-f6c3-48bd-94e5-62538bd5e7e5.png)
 
-
-
 Site de busca de heróis da marvel, desafio envio pela LuisaLabs. (Ainda precisa refatorar, mas está 100% funcional)
+
+Consegue ver o deploy aqui: <a href="https://62c3998d3567136c853feeba--matheeus-cf-marvel.netlify.app/"> Site </a>, para isso usei o `Netlify`
 
 ## Tecnologias:
 
